@@ -1,0 +1,45 @@
+@import '~sass-rem';
+
+$green-color: #74b566;
+$orange-color: #e6ae5f;
+$red-color: #c95c54;
+
+$disabled-btn-background: #cccccc;
+$disabled-btn-color: #666666;
+
+.container {
+  min-width: rem(200px);
+  border: rem(1px) solid grey;
+  border-radius: rem(4px);
+  padding: rem(8px);
+}
+
+.pauseButton,
+.resumeButton,
+.resetButton,
+.deleteButton {
+  border: none;
+  cursor: pointer;
+  margin-right: rem(10px);
+  padding: rem(5px);
+  color: white;
+}
+
+.pauseButton,
+.resumeButton {
+  background: $green-color;
+}
+
+.resetButton {
+  background: $orange-color;
+}
+.deleteButton {
+  background: $red-color;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: $disabled-btn-background;
+  color: $disabled-btn-color;
+  cursor: not-allowed;
+}
