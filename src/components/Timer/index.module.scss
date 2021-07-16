@@ -1,0 +1,7 @@
+@import '~sass-rem';
+
+.container {
+  width: rem(200px);
+  border: rem(1px) solid grey;
+  border-radius: rem(4px);
+}
