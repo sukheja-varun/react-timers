@@ -5,6 +5,9 @@ import styles from './App.module.scss';
 import Timer from './components/Timer';
 
 function App() {
+  // variables/constants
+  const MAX_TIMERS_ALLOWED = 10;
+
   // state
   const [timerList, setTimerList] = useState<number[]>([]);
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
@@ -18,7 +21,7 @@ function App() {
   };
 
   const onDelete = (indexToDelete: number) => {
-    const newList = timerList.filter((item, index) => index !== indexToDelete);
+    const newList = timerList.filter((_item, index) => index !== indexToDelete);
     setTimerList(newList);
   };
 
@@ -51,7 +54,10 @@ function App() {
   return (
     <div className={styles.app}>
       <header>
-        <AddTimer onAddTimer={onAddTimer} />
+        <AddTimer
+          onAddTimer={onAddTimer}
+          disabled={timerList.length >= MAX_TIMERS_ALLOWED}
+        />
       </header>
       <main>
         {timerList.map((timer, index) => (
