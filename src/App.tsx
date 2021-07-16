@@ -1,10 +1,15 @@
-import React from 'react';
-import styles from './App.module.scss';
+import React, { useState } from 'react';
 import AddTimer from './components/AddTimer';
 
+import styles from './App.module.scss';
+
 function App() {
+  // state
+  const [timerList, setTimerList] = useState<number[]>([]);
+
+  // functions
   const onAddTimer = (timerInSec: number) => {
-    console.log('timer to add', timerInSec);
+    setTimerList([...timerList, timerInSec]);
   };
 
   return (

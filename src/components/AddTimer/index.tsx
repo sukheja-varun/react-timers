@@ -31,7 +31,9 @@ const AddTimer: React.FC<AddTimerProps> = (props) => {
         value={inputVal}
         onChange={(e) => setInputVal(e.target.value)}
       />
-      <button onClick={addTimer}>Add Timer</button>
+      <button className={styles.addButton} onClick={addTimer}>
+        Add Timer
+      </button>
     </div>
   );
 };
