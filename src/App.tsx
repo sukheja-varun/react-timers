@@ -10,7 +10,7 @@ function App() {
 
   // state
   const [timerList, setTimerList] = useState<number[]>([]);
-  const [currentTime, setCurrentTime] = useState<Date>(new Date());
+  const [currentTime, setCurrentTime] = useState<Date | null>(null);
 
   // Refs
   const $timerId = useRef<null | number>(null);
@@ -60,14 +60,18 @@ function App() {
         />
       </header>
       <main>
-        {timerList.map((timer, index) => (
-          <Timer
-            key={`${index}${timer}`}
-            timerInSec={timer}
-            onDelete={() => onDelete(index)}
-            currentDateTime={currentTime}
-          />
-        ))}
+        {timerList.map(
+          (timer, index) =>
+            currentTime &&
+            timer && (
+              <Timer
+                key={`${index}${timer}`}
+                timerInSec={timer}
+                onDelete={() => onDelete(index)}
+                currentDateTime={currentTime}
+              />
+            )
+        )}
       </main>
     </div>
   );
