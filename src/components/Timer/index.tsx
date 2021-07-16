@@ -13,6 +13,7 @@ const Timer: React.FC<TimerProps> = (props) => {
   //   state
   const [endDateTime, setEndDateTime] = useState(getFutureDate());
   const [timerToDisplay, setTimerToDisplay] = useState(timerInSec);
+  const [pauseTimerInSec, setPauseTimerInSec] = useState<number | null>(null);
 
   // functions
   function getFutureDate(timeInSecToAdd: number = timerInSec + 1) {
@@ -21,6 +22,16 @@ const Timer: React.FC<TimerProps> = (props) => {
 
   const onReset = () => {
     setEndDateTime(getFutureDate());
+    setPauseTimerInSec(null);
+  };
+
+  const onPause = () => {
+    setPauseTimerInSec(timerToDisplay);
+  };
+
+  const onResume = () => {
+    pauseTimerInSec && setEndDateTime(getFutureDate(pauseTimerInSec));
+    setPauseTimerInSec(null);
   };
 
   // useEffect
@@ -35,8 +46,18 @@ const Timer: React.FC<TimerProps> = (props) => {
 
   return (
     <div className={styles.container}>
-      <h3>{timerToDisplay}</h3>
+      <h1>{timerToDisplay}s</h1>
       <div>
+        {!pauseTimerInSec && (
+          <button className={styles.pauseButton} onClick={onPause}>
+            Pause
+          </button>
+        )}
+        {pauseTimerInSec && (
+          <button className={styles.resumeButton} onClick={onResume}>
+            Resume
+          </button>
+        )}
         <button className={styles.resetButton} onClick={onReset}>
           Reset
         </button>
