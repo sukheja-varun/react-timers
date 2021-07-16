@@ -1,6 +1,17 @@
+@import '~sass-rem';
+
 .app {
   header {
     display: flex;
     justify-content: center;
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: rem(20px);
+    & > div{
+      margin:10px
+    }
   }
 }
