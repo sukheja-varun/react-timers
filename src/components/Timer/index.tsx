@@ -16,7 +16,7 @@ const Timer: React.FC<TimerProps> = (props) => {
   const [pauseTimerInSec, setPauseTimerInSec] = useState<number | null>(null);
 
   // functions
-  function getFutureDate(timeInSecToAdd: number = timerInSec + 1) {
+  function getFutureDate(timeInSecToAdd: number = timerInSec) {
     return new Date(currentDateTime.getTime() + timeInSecToAdd * 1000);
   }
 
@@ -37,12 +37,13 @@ const Timer: React.FC<TimerProps> = (props) => {
   // useEffect
 
   useEffect(() => {
+    if (pauseTimerInSec) return;
     const diff = endDateTime.getTime() - currentDateTime.getTime();
     const diffInSec = Math.round(diff / 1000);
     const newTimer = diffInSec > 0 ? diffInSec : 0;
 
     setTimerToDisplay(newTimer);
-  }, [currentDateTime, endDateTime]);
+  }, [currentDateTime, endDateTime, pauseTimerInSec]);
 
   return (
     <div className={styles.container}>
