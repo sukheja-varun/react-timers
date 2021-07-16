@@ -1,0 +1,10 @@
+.container {
+  width: 200px;
+  text-align: center;
+
+  input {
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
