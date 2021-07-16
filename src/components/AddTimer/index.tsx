@@ -15,7 +15,10 @@ const AddTimer: React.FC<AddTimerProps> = (props) => {
   // functions
   const addTimer = () => {
     const val: number = parseInt(inputVal);
-    if (isNaN(val)) return;
+    if (isNaN(val) || val < 1) {
+      alert('Invalid input');
+      return
+    }
     onAddTimer(val);
     setInputVal('');
   };

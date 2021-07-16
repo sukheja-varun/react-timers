@@ -9,7 +9,9 @@ function App() {
   const MAX_TIMERS_ALLOWED = 10;
 
   // state
-  const [timerList, setTimerList] = useState<number[]>([]);
+  const [timerList, setTimerList] = useState<
+    { id: number; timerInSec: number }[]
+  >([]);
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
 
   // Refs
@@ -17,11 +19,11 @@ function App() {
 
   // functions
   const onAddTimer = (timerInSec: number) => {
-    setTimerList([...timerList, timerInSec]);
+    setTimerList([...timerList, { id: Date.now(), timerInSec }]);
   };
 
-  const onDelete = (indexToDelete: number) => {
-    const newList = timerList.filter((_item, index) => index !== indexToDelete);
+  const onDelete = (id: number) => {
+    const newList = timerList.filter((item) => item.id !== id);
     setTimerList(newList);
   };
 
@@ -61,13 +63,12 @@ function App() {
       </header>
       <main>
         {timerList.map(
-          (timer, index) =>
-            currentTime &&
-            timer && (
+          ({ id, timerInSec }) =>
+            currentTime && (
               <Timer
-                key={`${index}${timer}`}
-                timerInSec={timer}
-                onDelete={() => onDelete(index)}
+                key={id}
+                timerInSec={timerInSec}
+                onDelete={() => onDelete(id)}
                 currentDateTime={currentTime}
               />
             )
