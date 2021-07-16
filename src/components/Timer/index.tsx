@@ -19,6 +19,10 @@ const Timer: React.FC<TimerProps> = (props) => {
     return new Date(currentDateTime.getTime() + timeInSecToAdd * 1000);
   }
 
+  const onReset = () => {
+    setEndDateTime(getFutureDate());
+  };
+
   // useEffect
 
   useEffect(() => {
@@ -33,6 +37,9 @@ const Timer: React.FC<TimerProps> = (props) => {
     <div className={styles.container}>
       <h3>{timerToDisplay}</h3>
       <div>
+        <button className={styles.resetButton} onClick={onReset}>
+          Reset
+        </button>
         <button className={styles.deleteButton} onClick={onDelete}>
           Delete
         </button>
