@@ -9616,6 +9616,11 @@ sass-loader@^10.0.5:
     schema-utils "^3.0.0"
     semver "^7.3.2"
 
+sass-rem@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/sass-rem/-/sass-rem-3.0.0.tgz#82a700b69ca4ea725befdf8ed9844f5dfb71b55b"
+  integrity sha512-tgK/2ojS/z4OjlJT6J/Gc3TgN97W/4tTWuEdVXO1/P46L/Ud4iG3t+s007KTHP+BX9tqLgFPl3fgstUsva5rtg==
+
 sass@^1.35.2:
   version "1.35.2"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.35.2.tgz#b732314fcdaf7ef8d0f1698698adc378043cb821"
