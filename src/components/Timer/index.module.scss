@@ -4,8 +4,11 @@ $green-color: #74b566;
 $orange-color: #e6ae5f;
 $red-color: #c95c54;
 
+$disabled-btn-background: #cccccc;
+$disabled-btn-color: #666666;
+
 .container {
-  width: rem(200px);
+  min-width: rem(200px);
   border: rem(1px) solid grey;
   border-radius: rem(4px);
   padding: rem(8px);
@@ -32,4 +35,11 @@ $red-color: #c95c54;
 }
 .deleteButton {
   background: $red-color;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: $disabled-btn-background;
+  color: $disabled-btn-color;
+  cursor: not-allowed;
 }

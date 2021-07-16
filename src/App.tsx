@@ -62,7 +62,7 @@ function App() {
       <main>
         {timerList.map((timer, index) => (
           <Timer
-            key={index}
+            key={`${index}${timer}`}
             timerInSec={timer}
             onDelete={() => onDelete(index)}
             currentDateTime={currentTime}

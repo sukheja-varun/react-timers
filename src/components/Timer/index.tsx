@@ -49,16 +49,28 @@ const Timer: React.FC<TimerProps> = (props) => {
       <h1>{timerToDisplay}s</h1>
       <div>
         {!pauseTimerInSec && (
-          <button className={styles.pauseButton} onClick={onPause}>
+          <button
+            className={styles.pauseButton}
+            onClick={onPause}
+            disabled={timerToDisplay === 0}
+          >
             Pause
           </button>
         )}
         {pauseTimerInSec && (
-          <button className={styles.resumeButton} onClick={onResume}>
+          <button
+            className={styles.resumeButton}
+            onClick={onResume}
+            disabled={timerToDisplay === 0}
+          >
             Resume
           </button>
         )}
-        <button className={styles.resetButton} onClick={onReset}>
+        <button
+          className={styles.resetButton}
+          onClick={onReset}
+          disabled={timerToDisplay === 0}
+        >
           Reset
         </button>
         <button className={styles.deleteButton} onClick={onDelete}>
